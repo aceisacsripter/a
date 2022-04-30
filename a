@@ -1,0 +1,23 @@
+	local rhttp = game:GetService('HttpService') 
+	if toClipboard then
+		toClipboard('https://discord.gg/FBJaanCfrH')
+
+	else
+
+	end
+	local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
+	if req then
+		req({
+			Url = 'http://127.0.0.1:6463/rpc?v=1',
+			Method = 'POST',
+			Headers = {
+				['Content-Type'] = 'application/json',
+				Origin = 'https://discord.com'
+			},
+			Body = rhttp:JSONEncode({
+				cmd = 'INVITE_BROWSER',
+				nonce = rhttp:GenerateGUID(false),
+				args = {code = 'FBJaanCfrH'}
+			})
+		})
+	end
